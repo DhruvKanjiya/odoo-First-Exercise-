@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inheriting and modifying the form view of the res.users model -->
+        <record id="inherited_model_view_form" model="ir.ui.view">
+            <field name="name">res.users.form.inherit</field> <!-- Custom name for the inherited view -->
+            <field name="model">res.users</field> <!-- The model we are inheriting from (res.users) -->
+            <field name="inherit_id" ref="base.view_users_form"/> <!-- Inheriting the base user form view -->
+            <field name="arch" type="xml">
+                <!-- Inserting a new page for Real Estate Properties after the 'preferences' page -->
+                <xpath expr="//page[@name='preferences']" position="after">
+                    <!-- Defining the new page tab titled 'Real Estate Properties' -->
+                    <page string="Real Estate Properties">
+                        <!-- Displaying the property_ids field on this page -->
+                        <field name="property_ids"/> <!-- Linking the user's associated properties -->
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
